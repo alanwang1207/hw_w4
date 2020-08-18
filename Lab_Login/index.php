@@ -1,9 +1,14 @@
 <?php 
+session_start();
 
-if (isset($_COOKIE["userName"]))
-  $sUserName = $_COOKIE["userName"];
-else 
-  $sUserName = "Guest";
+if(isset($_SESSION['user'])){
+  $userName = $_SESSION['user'];
+  echo "??";
+}
+else{
+  $userName = "Guest";
+}
+
 
 ?>
 

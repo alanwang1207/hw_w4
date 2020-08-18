@@ -2,7 +2,7 @@
 
 if (isset($_GET["logout"]))
 {
-	setcookie("userName", "Guest", time() - 3600);
+	session_destroy();
 	header("Location: index.php");
 	exit();
 }
@@ -18,15 +18,15 @@ if (isset($_POST["btnOK"]))
 	$sUserName = $_POST["txtUserName"];
 	if (trim($sUserName) != "")
 	{
-		setcookie("userName", $sUserName);
-		if (isset($_COOKIE["lastPage"]))
-		  header(sprintf("Location: %s", $_COOKIE["lastPage"]));
-		else
-		   header("Location: index.php");
-		exit();
-	}
-	
-}
+    echo $userName;
+    $_SESSION['user'] = $userName;
+		header("Location: index.php");
+      exit;
+    }
+    else{
+      echo "Please input username";
+    }
+  }
 
 ?>
 
