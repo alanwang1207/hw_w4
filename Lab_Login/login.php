@@ -1,32 +1,52 @@
-<?php 
+<!-- <?php
+      function start_session($expire = 0)
+      {
+        if ($expire == 0) {
+          $expire = ini_get('session.gc_maxlifetime');
+        } else {
+          ini_set('session.gc_maxlifetime', $expire);
+        }
 
-if (isset($_GET["logout"]))
-{
-	session_destroy();
-	header("Location: index.php");
-	exit();
-}
+        if (empty($_COOKIE['PHPSESSID'])) {
+          session_set_cookie_params($expire);
+          session_start();
+        } else {
+          session_start();
+          setcookie('PHPSESSID', session_id(), time() + $expire);
+        }
+      }
+      ?> -->
 
-if (isset($_POST["btnHome"]))
-{
-	header("Location: index.php");
-	exit();
-}
+<?php
 
-if (isset($_POST["btnOK"]))
-{
-	$sUserName = $_POST["txtUserName"];
-	if (trim($sUserName) != "")
-	{
-    echo $userName;
-    $_SESSION['user'] = $userName;
-		header("Location: index.php");
-      exit;
-    }
-    else{
-      echo "Please input username";
-    }
+if (isset($_GET["logout"])) {
+  if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 3600)) {
+    // last request was more than 30 minutes ago
+    session_unset();     // unset $_SESSION variable for the run-time 
+    session_destroy();   // destroy session data in storage
   }
+  $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+  header("Location: index.php");
+  exit();
+}
+
+if (isset($_POST["btnHome"])) {
+  header("Location: index.php");
+  exit();
+}
+
+if (isset($_POST["btnOK"])) {
+  $sUserName = $_POST["txtUserName"];
+  if (trim($sUserName) != "") {
+    //echo $userName;
+    $_SESSION["userName"] = $userName;
+    if (isset($_SESSION["lastPage"]))
+      header(sprintf("Location: %s", $_SESSION["lastPage"]));
+    else
+      header("Location: index.php");
+    exit();
+  }
+}
 
 ?>
 

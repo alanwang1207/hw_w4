@@ -1,7 +1,9 @@
 <?php
   session_start();
 
-  if(!isset($_SESSION['user'])){
+  if(!isset($_SESSION["userName"])){
+    $secret = "secret.php";
+    $_SESSION["lastPage"] = $secret;
     header("Location: login.php");
 	  exit();
   }

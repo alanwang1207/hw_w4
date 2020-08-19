@@ -1,12 +1,11 @@
 <?php 
 session_start();
 
-if(isset($_SESSION['user'])){
-  $userName = $_SESSION['user'];
-  echo "??";
+if(isset($_SESSION["userName"])){
+  $sUserName = $_SESSION["userName"];
 }
 else{
-  $userName = "Guest";
+  $sUserName = "Guest";
 }
 
 
