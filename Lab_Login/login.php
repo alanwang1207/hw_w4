@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
       function start_session($expire = 0)
       {
         if ($expire == 0) {
@@ -15,31 +15,37 @@
           setcookie('PHPSESSID', session_id(), time() + $expire);
         }
       }
-      ?> -->
+      ?>
 
 <?php
 session_start();
 if (isset($_GET["logout"])) {
-  if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 3600)) {
-    // last request was more than 30 minutes ago
-    session_unset();     // unset $_SESSION variable for the run-time 
-    session_destroy();   // destroy session data in storage
-  }
-  $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+  //start_session(3600);
+  // if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 3600)) {
+  //   // last request was more than 30 minutes ago
+  //   session_unset();     // unset $_SESSION variable for the run-time 
+  //   session_destroy();   // destroy session data in storage
+  // }
+  // $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+  session_unset(); 
+  session_destroy(); 
   header("Location: index.php");
   exit();
 }
 
-if (isset($_POST["btnHome"])) {
+if (isset($_POST["btnHome"])) 
+{
   header("Location: index.php");
   exit();
 }
 
-if (isset($_POST["btnOK"])) {
+if (isset($_POST["btnOK"])) 
+{
   $sUserName = $_POST["txtUserName"];
-  if (trim($sUserName) != "") {
+  if (trim($sUserName) != "") 
+  {
     //echo $userName;
-    $_SESSION["userName"] = $userName;
+    $_SESSION["userName"] = $sUserName;
     if (isset($_SESSION["lastPage"]))
       header(sprintf("Location: %s", $_SESSION["lastPage"]));
     else
