@@ -18,7 +18,7 @@
       ?> -->
 
 <?php
-
+session_start();
 if (isset($_GET["logout"])) {
   if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 3600)) {
     // last request was more than 30 minutes ago
