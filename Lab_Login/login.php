@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_GET["logout"])) {
-  session_unset();
+  // session_unset($sUserName);
   session_destroy();
   header("Location: index.php");
   exit();
@@ -16,27 +16,31 @@ if (isset($_POST["btnOK"])) {
   $sUserName = $_POST["txtUserName"];
   $passWord = $_POST['txtPassword'];
   if (trim($sUserName) != "") {
-    echo "Dear " . $userName . ":";
+    echo "Hi {$sUserName} :";
 
+    require("config.php");
 
-    $sql = "select * from `user` WHERE `username` = $userName and `password` = $passWord";
+    $link = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $port);
+    mysqli_query($link, "set names utf-8");
+    $sql = "select * from `user` WHERE `username` = '$sUserName' and `password` = '$passWord'";
+
     $result = mysqli_query($link, $sql);
-    $row_num = mysqli_num_rows($result);
-
-    mysqli_close($link);
+    $row_count = mysqli_num_rows($result);
+    var_dump($result);
+    
 
     $_SESSION["userName"] = $sUserName;
-    if ($row_num != 0) {
+    if ($row_count != 0) {
       echo "welcome!{$sUserName}";
       header("Location: index.php");
       exit();
     } else {
-      echo "wrong username or password";
+      echo "輸入資料有誤";
       //header("Location: index.php");
       exit();
     }
   } else {
-    echo "Please input username";
+    echo "請輸入帳號";
   }
 }
 ?>
