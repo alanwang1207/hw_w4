@@ -22,7 +22,9 @@
 <?php
 session_start();
 if (isset($_GET["logout"])) {
-  start_session(3600);
+  // start_session(3600);
+  // echo ini_set('session.gc_maxlifetime', 3600);
+  
   // session_unset($sUserName);
   session_destroy();
   header("Location: index.php");
