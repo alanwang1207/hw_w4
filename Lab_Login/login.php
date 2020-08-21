@@ -1,6 +1,28 @@
+<!-- set session time -->
+<!-- <?php
+      function start_session($expire = 0)
+      {
+        if ($expire == 0) {
+          $expire = ini_get('session.gc_maxlifetime');
+        } else {
+          ini_set('session.gc_maxlifetime', $expire);
+        }
+
+        if (empty($_COOKIE['PHPSESSID'])) {
+          session_set_cookie_params($expire);
+          session_start();
+        } else {
+          session_start();
+          setcookie('PHPSESSID', session_id(), time() + $expire);
+        }
+      }
+      ?> -->
+
+
 <?php
 session_start();
 if (isset($_GET["logout"])) {
+  start_session(3600);
   // session_unset($sUserName);
   session_destroy();
   header("Location: index.php");
@@ -18,21 +40,21 @@ if (isset($_POST["btnOK"])) {
   if (trim($sUserName) != "") {
     echo "Hi {$sUserName} :";
 
-    require("config.php");
+    require_once("config.php");
 
     $link = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $port);
     mysqli_query($link, "set names utf-8");
-    $sql = "select * from `user` WHERE `username` = '$sUserName' and `password` = '$passWord'";
+    $sql = "select `username`,`password` from `user` WHERE `username` = '$sUserName' and `password` = '$passWord'";
 
     $result = mysqli_query($link, $sql);
     $row_count = mysqli_num_rows($result);
-    // var_dump($result);
+    var_dump($row_count);
 
 
     $_SESSION["userName"] = $sUserName;
     if ($row_count != 0) {
       echo "welcome!{$sUserName}";
-      header("Location: index.php");
+      header("Location: secret.php");
       exit();
     } else {
       echo "輸入資料有誤";

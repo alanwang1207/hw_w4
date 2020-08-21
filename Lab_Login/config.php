@@ -6,7 +6,7 @@
 	$dbuser = 'root';
 	$dbpass = '';
 	$dbname = 'test';
-	$port = '3306';
+	$port = 3306;
 
 ?> -->
 
@@ -18,6 +18,6 @@
 	$dbuser = 'root';
 	$dbpass = 'root';
 	$dbname = 'test';
-	$port = '8889';
+	$port = 8889;
 
 ?>
