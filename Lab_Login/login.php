@@ -50,7 +50,7 @@ if (isset($_POST["btnOK"])) {
 
     $result = mysqli_query($link, $sql);
     $row_count = mysqli_num_rows($result);
-    var_dump($row_count);
+    //var_dump($row_count);
 
 
     $_SESSION["userName"] = $sUserName;

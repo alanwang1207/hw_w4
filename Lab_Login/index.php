@@ -8,7 +8,10 @@ if(isset($_SESSION["userName"])){
 else{
   $sUserName = "Guest";
 }
-
+if (isset($_POST["member"])) {
+  header("Location: index.php");
+  exit();
+}
 
 ?>
 
@@ -17,7 +20,7 @@ else{
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Lab - index</title>
+  <title>首頁</title>
 </head>
 
 <body>
@@ -36,7 +39,7 @@ else{
         <td align="center" valign="baseline"><a href="login.php?logout=1">登出</a>
         <?php endif; ?>
 
-        | <a href="secret.php">會員專用頁</a></td>
+        | <a href="secret.php" id="member" type="submit">會員專用頁</a></td>
     </tr>
     <tr>
       <td align="center" bgcolor="#CCCCCC"><?php echo "Welcome! " . $sUserName ?> </td>
