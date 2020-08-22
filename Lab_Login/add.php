@@ -1,19 +1,24 @@
 <?php
 
 if (isset($_POST["okButton"])) {
-  $userName = $_POST["userName"];
-  echo $firstName;
-  $passWord = $_POST["passWord"];
-  $sql = <<<sqlstate
-    insert into user (userName,passWord)
+    $userName = $_POST["userName"];
+    echo $firstName;
+    $passWord = $_POST["passWord"];
+    if (trim(($userName && $passWord) != "")) {
+        $sql = <<<sqlstate
+    insert into user (username,password)
     values('$userName','$passWord')
   sqlstate;
-
-  require("config.php");
-  mysqli_query($link,$sql);
-  header("location: index.php");
+        require_once("config.php");
+        mysqli_query($link, $sql);       
+        header("location: index.php");
+    } else {
+        // 使用js語法
+        echo '<script language="javascript">';
+        echo 'alert("帳號或密碼請輸入完整")';
+        echo '</script>';
+    }
 }
-
 ?>
 
 
@@ -31,7 +36,7 @@ if (isset($_POST["okButton"])) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <form>
+    <form  method="post">
         <div class="form-group row">
             <label for="userName" class="col-4 col-form-label">帳號</label>
             <div class="col-8">

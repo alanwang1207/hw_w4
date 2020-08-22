@@ -31,7 +31,7 @@ else{
     <tr>
 
       <?php if ($sUserName == "Guest") : ?>
-        <td align="center" valign="baseline"><a href="login.php">登入</a>
+        <td align="center"  valign="baseline"><a href="login.php">登入</a>
         <?php else : ?>
         <td align="center" valign="baseline"><a href="login.php?logout=1">登出</a>
         <?php endif; ?>
