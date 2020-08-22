@@ -12,5 +12,4 @@ $sql = <<<multi
 multi;
 require("config.php");
 mysqli_query($link, $sql);
-
 header("location: login.php");
