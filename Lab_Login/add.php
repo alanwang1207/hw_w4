@@ -11,8 +11,8 @@ if (isset($_POST["okButton"])) {
     values('$userName','$passWord')
   sqlstate;
         require_once("config.php");
-        mysqli_query($link, $sql);       
-        header("location: index.php");
+        mysqli_query($link, $sql);   
+        echo "<script> alert('加入成功，請重新登入');location.replace('login.php');</script>";    
     } else {
         // 使用js語法
         echo '<script language="javascript">';

@@ -66,7 +66,7 @@ if (isset($_POST["okButton"])) {
             <div class="form-group row">
                 <label for="password" class="col-4 col-form-label">密碼:</label>
                 <div class="col-8">
-                    <input id="password" name="password" value="<?= $row["password"] ?>" type="text" class="form-control">
+                    <input id="password" name="password" value="<?= base64_decode($row["password"]) ?>" type="text" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
