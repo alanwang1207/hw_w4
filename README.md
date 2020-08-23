@@ -19,3 +19,6 @@ ________
 ________
 4.刪除功能完成
 ![image](https://github.com/alanwang1207/hw_w4/blob/master/img/%E5%88%AA%E9%99%A4%E5%8A%9F%E8%83%BD%E5%AE%8C%E6%88%90.gif)
+________
+5.加密功能完成
+![image](https://github.com/alanwang1207/hw_w4/blob/master/img/%E5%8A%A0%E5%AF%86%E5%8A%9F%E8%83%BD%E5%AE%8C%E6%88%90.gif)
