@@ -38,7 +38,7 @@ if (isset($_POST["btnHome"])) {
 
 if (isset($_POST["btnOK"])) {
   $sUserName = $_POST["txtUserName"];
-  $passWord = $_POST['txtPassword'];
+  $passWord = base64_encode($_POST['txtPassword']);
   if (trim($sUserName) != "") {
     echo "Hi {$sUserName} :";
 
