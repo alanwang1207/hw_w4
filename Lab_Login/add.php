@@ -4,6 +4,7 @@ if (isset($_POST["okButton"])) {
     $userName = $_POST["userName"];
     echo $firstName;
     $passWord = $_POST["passWord"];
+    
     if (trim(($userName && $passWord) != "")) {
         $sql = <<<sqlstate
     insert into user (username,password)

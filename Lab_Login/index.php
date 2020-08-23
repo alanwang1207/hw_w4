@@ -41,12 +41,13 @@ if (isset($_POST["member"])) {
         <?php endif; ?>
 
         <a href="secret.php" id="member" type="submit" class="btn btn-outline-info">會員專用頁</a></td>
-        <img src="hello.jpg" class="rounded-circle" alt="Cinque Terre">
+       
         </span>
 
     <tr>
       <td align="center" bgcolor="#CCCCCC"><?php echo "Hello~ " . $sUserName ?> </td>
     </tr>
+    <img src="hello.jpg" class="rounded-circle img-thumbnail mx-auto d-block" alt="Cinque Terre" style="width:50%">
   </table>
 
 
