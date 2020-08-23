@@ -21,28 +21,31 @@ if (isset($_POST["member"])) {
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>首頁</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
 <body>
 
-  <table width="300" border="0" align="center" cellpadding="5" cellspacing="0" bgcolor="#F2F2F2">
-    <tr>
-      <td align="center" bgcolor="#CCCCCC">
-        <font color="#FFFFFF">會員系統 - 首頁</font>
-      </td>
-    </tr>
-    <tr>
-
+<div class="container">
+      <h2>會員系統 - 首頁</h2>
+      <span>
       <?php if ($sUserName == "Guest") : ?>
-        <td align="center"  valign="baseline"><a href="login.php">登入</a>
+        <a href="login.php" class="btn btn-outline-success btn-md">登入</a>
         <?php else : ?>
-        <td align="center" valign="baseline"><a href="login.php?logout=1">登出</a>
+        <a href="login.php?logout=1" class="btn btn-outline-warning btn-md">登出</a>
         <?php endif; ?>
 
-        | <a href="secret.php" id="member" type="submit">會員專用頁</a></td>
-    </tr>
+        <a href="secret.php" id="member" type="submit" class="btn btn-outline-info">會員專用頁</a></td>
+        <img src="hello.jpg" class="rounded-circle" alt="Cinque Terre">
+        </span>
+
     <tr>
-      <td align="center" bgcolor="#CCCCCC"><?php echo "Welcome! " . $sUserName ?> </td>
+      <td align="center" bgcolor="#CCCCCC"><?php echo "Hello~ " . $sUserName ?> </td>
     </tr>
   </table>
 

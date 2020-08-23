@@ -71,8 +71,8 @@ if (isset($_POST["okButton"])) {
             </div>
             <div class="form-group row">
                 <div class="offset-4 col-8">
-                    <button name="okButton" value="OK" type="submit" class="btn btn-primary">Submit</button>
-                    <button name="cancelButton" value="Cancel" type="submit" class="btn btn-primary">Cancel</button>
+                    <button name="okButton" value="OK" type="submit" class="btn btn-primary">確認修改</button>
+                    <button name="cancelButton" value="Cancel" type="submit" class="btn btn-secondary">取消修改</button>
                 </div>
             </div>
         </form>
