@@ -64,7 +64,10 @@ if (isset($_POST["btnOK"])) {
       exit();
     }
   } else {
-    echo "請輸入帳號";
+    //echo "請輸入帳號";
+    echo '<script language="javascript">';
+    echo'alert("請輸入帳號")';
+    echo '</script>';
   }
 }
 ?>
